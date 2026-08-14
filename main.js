@@ -114,6 +114,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Handle "Dengar Sekarang" click redirection & autoplay
+  const ctaButtons = document.querySelectorAll(".nav__right .btn-pill, .mobile-menu .btn-pill");
+  ctaButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const isHomepage = window.location.pathname.endsWith("index.html") || 
+                         window.location.pathname === "/" || 
+                         window.location.pathname.endsWith("/");
+      if (isHomepage) {
+        if (typeof window.goTo === "function" && typeof window.setPlaying === "function") {
+          window.goTo(0);
+          window.setPlaying(true);
+        }
+      } else {
+        window.location.href = "index.html?autoplay=true";
+      }
+    });
+  });
+
   // Generate a circular favicon dynamically from the logo image
   const faviconImg = new Image();
   faviconImg.src = "emotion-logo.png";

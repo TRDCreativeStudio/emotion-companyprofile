@@ -341,6 +341,17 @@ newsItems.forEach(n=>{
 });
 
 render();
+
+// Check for autoplay redirection parameter from CTA button clicks
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('autoplay') === 'true') {
+  setTimeout(() => {
+    goTo(0);
+    setPlaying(true);
+    // Clean URL bar to avoid autoplay on subsequent manual reloads
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }, 300);
+}
 </script>
 </body>
 </html>
