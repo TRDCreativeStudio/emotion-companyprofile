@@ -48,6 +48,24 @@
   .btn-ghost-icon.play:hover{background:#ff3b4f;}
   .btn-ghost-icon svg{width:14px;height:14px;}
 
+  @keyframes pulsePlay {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(227, 30, 50, 0.6);
+    }
+    70% {
+      transform: scale(1.08);
+      box-shadow: 0 0 0 10px rgba(227, 30, 50, 0);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(227, 30, 50, 0);
+    }
+  }
+  .btn-ghost-icon.play.pulse {
+    animation: pulsePlay 1.6s infinite ease-in-out;
+  }
+
   .player__track{flex:1 1 220px; min-width:0;}
   .scrub{height:3px; background:var(--color-iron); border-radius:2px; cursor:pointer; overflow:hidden;}
   .scrub__fill{height:100%; width:6%; background:var(--color-red); transition:width .2s linear;}
@@ -151,7 +169,7 @@
     <button class="btn-ghost-icon" id="prevBtn" aria-label="Artis sebelumnya">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
     </button>
-    <button class="btn-ghost-icon play" id="playBtn" aria-label="Putar / jeda">
+    <button class="btn-ghost-icon play pulse" id="playBtn" aria-label="Putar / jeda">
       <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
     </button>
     <button class="btn-ghost-icon" id="nextBtn" aria-label="Artis berikutnya">
@@ -295,6 +313,10 @@ function setPlaying(state){
   recDot.classList.toggle('playing',playing);
   wave.classList.toggle('playing',playing);
   playIcon.setAttribute('d', playing ? 'M6 5h4v14H6zm8 0h4v14h-4z' : 'M8 5v14l11-7z');
+  
+  // Toggle the blinking heartbeat pulse animation when paused
+  document.getElementById('playBtn').classList.toggle('pulse', !playing);
+  
   clearInterval(progressTimer);
   if(playing){
     if (audio.src !== tracks[current].src) {
