@@ -113,4 +113,32 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // Generate a circular favicon dynamically from the logo image
+  const faviconImg = new Image();
+  faviconImg.src = "emotion-logo.png";
+  faviconImg.onload = () => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 64;
+    canvas.height = 64;
+    const ctx = canvas.getContext("2d");
+    
+    ctx.beginPath();
+    ctx.arc(32, 32, 32, 0, Math.PI * 2);
+    ctx.clip();
+    
+    const size = Math.min(faviconImg.width, faviconImg.height);
+    const sx = (faviconImg.width - size) / 2;
+    const sy = (faviconImg.height - size) / 2;
+    ctx.drawImage(faviconImg, sx, sy, size, size, 0, 0, 64, 64);
+    
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = "icon";
+      link.type = "image/png";
+      document.head.appendChild(link);
+    }
+    link.href = canvas.toDataURL();
+  };
 });
