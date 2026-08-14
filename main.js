@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.createElement("nav");
   nav.className = "nav";
   nav.innerHTML = `
-    <a href="e-motion-rebrand-final.html" class="nav__logo">
+    <a href="index.html" class="nav__logo">
       <img src="${logoBase64}" alt="E-Motion Entertainment">
     </a>
     <ul class="nav__links">
-      <li><a href="e-motion-rebrand-final.html" class="${activeKey === "highlight" ? "active" : ""}">Highlight</a></li>
+      <li><a href="index.html" class="${activeKey === "highlight" ? "active" : ""}">Highlight</a></li>
       <li><a href="page-journey.html" class="${activeKey === "journey" ? "active" : ""}">Journey</a></li>
       <li><a href="page-do.html" class="${activeKey === "do" ? "active" : ""}">Do</a></li>
       <li><a href="page-see.html" class="${activeKey === "see" ? "active" : ""}">See</a></li>
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   mobileMenu.className = "mobile-menu";
   mobileMenu.id = "mobileMenu";
   mobileMenu.innerHTML = `
-    <a href="e-motion-rebrand-final.html" class="${activeKey === "highlight" ? "active" : ""}">Highlight</a>
+    <a href="index.html" class="${activeKey === "highlight" ? "active" : ""}">Highlight</a>
     <a href="page-journey.html" class="${activeKey === "journey" ? "active" : ""}">Journey</a>
     <a href="page-do.html" class="${activeKey === "do" ? "active" : ""}">Do</a>
     <a href="page-see.html" class="${activeKey === "see" ? "active" : ""}">See</a>
