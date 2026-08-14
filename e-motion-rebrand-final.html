@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-Motion — Rebrand Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="global.css">
+<style>
+  /* ---------- HERO ---------- */
+  .hero{position:relative; min-height:78vh; display:flex; align-items:flex-end; background:var(--color-navy); overflow:hidden;}
+  .hero__bg{position:absolute; inset:0;}
+  .hero__bg img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1s ease;}
+  .hero__bg img.active{opacity:1;}
+  .hero__scrim{position:absolute; inset:0; background:linear-gradient(to top, rgba(11,25,48,.92) 8%, rgba(11,25,48,.3) 55%, rgba(11,25,48,.15) 100%);}
+  .hero__inner{position:relative; z-index:2; width:100%; padding:0 clamp(20px,4vw,56px) 40px; color:#fff;}
+  .hero__eyebrow{display:flex; align-items:center; gap:8px; margin-bottom:16px; color:var(--color-fog-dark);}
+  .hero__eyebrow .rec{color:var(--color-red); font-size:12px;}
+  .hero__eyebrow .rec.playing{animation:blink 1.1s ease-in-out infinite;}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+  .hero__artist{font-size:clamp(36px,7vw,54px); line-height:1.1; margin:0 0 10px; transition:opacity .3s ease, transform .3s ease;}
+  .hero__track{display:flex; gap:10px; flex-wrap:wrap; align-items:baseline; color:rgba(255,255,255,.85); font-size:16px;}
+  .hero__track .meta{color:var(--color-fog-dark); font-size:14px;}
+  .fade-swap{opacity:0; transform:translateY(6px);}
+
+  /* ---------- PLAYER ---------- */
+  .player{
+    position:relative; z-index:2;
+    margin:24px clamp(20px,4vw,56px) 0;
+    background:var(--color-navy-800); color:#fff;
+    border-radius:var(--radius-cards);
+    box-shadow:0 0 0 1px var(--color-iron) inset;
+    padding:18px clamp(16px,3vw,28px);
+    display:flex; align-items:center; gap:18px;
+    flex-wrap:wrap;
+  }
+  .player__controls{display:flex; align-items:center; gap:8px; flex-shrink:0;}
+  .btn-ghost-icon{
+    width:36px;height:36px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:transparent; border:1px solid var(--color-iron); color:#fff;
+    cursor:pointer; transition:border-color .15s;
+  }
+  .btn-ghost-icon:hover{border-color:var(--color-red);}
+  .btn-ghost-icon.play{width:44px;height:44px; background:var(--color-red); border-color:var(--color-red);}
+  .btn-ghost-icon.play:hover{background:#ff3b4f;}
+  .btn-ghost-icon svg{width:14px;height:14px;}
+
+  .player__track{flex:1 1 220px; min-width:0;}
+  .scrub{height:3px; background:var(--color-iron); border-radius:2px; cursor:pointer; overflow:hidden;}
+  .scrub__fill{height:100%; width:6%; background:var(--color-red); transition:width .2s linear;}
+  .player__times{display:flex; justify-content:space-between; gap:8px; font-size:12px; color:var(--color-fog-dark); margin-top:8px;}
+  .player__times span:nth-child(2){overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+
+  .wave{display:flex; align-items:flex-end; gap:2px; height:22px; flex-shrink:0;}
+  .wave span{display:block; width:3px; background:var(--color-red); border-radius:1px; height:20%;}
+  .wave.playing span{animation:wv 1s ease-in-out infinite;}
+  .wave span:nth-child(1){animation-delay:0s;}
+  .wave span:nth-child(2){animation-delay:.1s;}
+  .wave span:nth-child(3){animation-delay:.2s;}
+  .wave span:nth-child(4){animation-delay:.3s;}
+  .wave span:nth-child(5){animation-delay:.15s;}
+  .wave span:nth-child(6){animation-delay:.25s;}
+  @keyframes wv{0%,100%{height:20%;}50%{height:100%;}}
+
+  /* ---------- ROSTER STRIP ---------- */
+  .roster{position:relative; z-index:2; display:flex; gap:12px; overflow-x:auto; scrollbar-width:none; margin:0 clamp(20px,4vw,56px); padding:16px 0 40px; -webkit-overflow-scrolling:touch;}
+  .roster::-webkit-scrollbar{display:none;}
+  .roster__item{flex:0 0 auto; width:120px; cursor:pointer; opacity:.55; transition:opacity .2s;}
+  .roster__item.active{opacity:1;}
+  .roster__thumb{width:120px; height:80px; border-radius:var(--radius-images); overflow:hidden; border:1px solid var(--color-ash);}
+  .roster__item.active .roster__thumb{border-color:var(--color-red);}
+  .roster__thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+  .roster__name{display:block; margin-top:8px; font-size:12px; color:var(--color-fog);}
+  .roster__item.active .roster__name{color:var(--color-ink); font-weight:500;}
+
+  /* ---------- ABOUT ---------- */
+  .about{max-width:640px; margin:0 auto; padding:clamp(56px,9vw,80px) 24px; text-align:left;}
+  .about p{font-size:clamp(22px,4vw,28px); line-height:1.35; font-weight:400; margin:0;}
+  .about .accent{background:linear-gradient(to top, var(--color-red-soft) 34%, transparent 34%); padding:0 2px;}
+
+  /* ---------- DIVISIONS ---------- */
+  .divisions{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; padding:0 clamp(20px,4vw,56px) 80px;}
+  .card-block{background:var(--color-surface); border-radius:var(--radius-cards); box-shadow:var(--shadow-subtle); padding:26px;}
+  .card-block .cap{font-size:12px; color:var(--color-red); text-transform:uppercase; letter-spacing:.07em; font-weight:600;}
+  .card-block h3{font-size:26px; font-weight:400; margin:12px 0 8px; color:var(--color-ink);}
+  .card-block p{font-size:14px; color:var(--color-fog); line-height:1.5; margin:0;}
+
+  /* ---------- HIGHLIGHT ---------- */
+  .highlight{padding:0 clamp(20px,4vw,56px) 90px;}
+  .highlight__head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:32px; flex-wrap:wrap; gap:12px;}
+  .highlight__head h2{font-size:clamp(28px,4vw,36px); font-weight:400; margin:0; color:var(--color-ink);}
+  .highlight__head a{color:var(--color-red); font-size:14px; font-weight:500;}
+  .highlight__head a:hover{text-decoration:underline; text-underline-offset:3px;}
+  .highlight__grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:20px;}
+  .news-card{background:var(--color-surface); border-radius:var(--radius-cards); box-shadow:var(--shadow-subtle); overflow:hidden; cursor:pointer;}
+  .news-card__img{aspect-ratio:4/3; overflow:hidden;}
+  .news-card__img img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .news-card:hover .news-card__img img{transform:scale(1.05);}
+  .news-card__body{padding:18px 20px 22px;}
+  .news-card__tag{font-size:11px; color:var(--color-red); text-transform:uppercase; letter-spacing:.07em; font-weight:600;}
+  .news-card__date{font-size:11px; color:var(--color-fog); margin-left:8px;}
+  .news-card__title{font-size:15px; font-weight:500; line-height:1.4; margin:10px 0 0; color:var(--color-ink);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .hero{min-height:70vh;}
+    .divisions{grid-template-columns:repeat(3,1fr); gap:12px;}
+    .card-block{padding:20px;}
+    .card-block h3{font-size:22px;}
+  }
+
+  @media (max-width:640px){
+    .promo{font-size:12px; padding:8px 12px;}
+    .hero{min-height:64vh;}
+    .player{gap:14px; padding:16px;}
+    .player__times span:nth-child(2){display:none;}
+    .wave{display:none;}
+    .roster__item{width:96px;}
+    .roster__thumb{width:96px; height:64px;}
+    .divisions{grid-template-columns:1fr;}
+    .about p{text-align:left;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="promo">New drop: Adrian Khalif's "2001x" world is live. <a href="#hero">Dengarkan sekarang</a></div>
+
+<section class="hero" id="hero">
+  <div class="hero__bg" id="heroBg"></div>
+  <div class="hero__scrim"></div>
+  <div class="hero__inner">
+    <p class="hero__eyebrow"><span class="rec" id="recDot">●</span>&nbsp;Now playing: e-motion roster</p>
+    <h1 class="hero__artist display" id="artistName">Adrian Khalif</h1>
+    <div class="hero__track">
+      <span id="trackTitle">"2001x"</span>
+      <span class="meta" id="trackMeta">feat. Aqeela Calista &amp; Fattah Syach, e-music</span>
+    </div>
+  </div>
+</section>
+
+<div class="player">
+  <div class="player__controls">
+    <button class="btn-ghost-icon" id="prevBtn" aria-label="Artis sebelumnya">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+    </button>
+    <button class="btn-ghost-icon play" id="playBtn" aria-label="Putar / jeda">
+      <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+    <button class="btn-ghost-icon" id="nextBtn" aria-label="Artis berikutnya">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6h2v12h-2zM6 6l8.5 6L6 18z"/></svg>
+    </button>
+  </div>
+  <div class="player__track">
+    <div class="scrub" id="scrub"><div class="scrub__fill" id="barFill"></div></div>
+    <div class="player__times">
+      <span class="mono" id="timeNow">00:00</span>
+      <span id="timeArtist">Adrian Khalif, 2001x</span>
+      <span class="mono" id="timeTotal">03:24</span>
+    </div>
+  </div>
+  <div class="wave" id="wave"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+
+<div class="roster" id="roster"></div>
+
+<section class="about">
+  <p>E-Motion adalah rumah bagi musisi, penyiar, dan pencerita di seluruh Indonesia: <span class="accent">satu label, banyak suara.</span></p>
+</section>
+
+<div class="divisions">
+  <div class="card-block">
+    <span class="cap">e-do</span>
+    <h3 class="display">Produksi</h3>
+    <p>Konten digital, film, dan program televisi dari konsep sampai tayang.</p>
+  </div>
+  <div class="card-block">
+    <span class="cap">e-see</span>
+    <h3 class="display">Panggung</h3>
+    <p>Live session, tur, dan pengalaman langsung bersama audiens.</p>
+  </div>
+  <div class="card-block">
+    <span class="cap">e-hear</span>
+    <h3 class="display">Musik</h3>
+    <p>Rilisan artis roster, dari single perdana sampai album penuh.</p>
+  </div>
+</div>
+
+<section class="highlight">
+  <div class="highlight__head">
+    <h2 class="display">Highlight</h2>
+    <a href="#">Lihat semua</a>
+  </div>
+  <div class="highlight__grid" id="highlightGrid"></div>
+</section>
+
+<script src="main.js"></script>
+<script>
+const tracks = [
+  {artist:"Adrian Khalif", title:'"2001x"', meta:"feat. Aqeela Calista & Fattah Syach, e-music", duration:"03:24", img:"https://e-motion.co.id/wp-content/uploads/2026/06/adriankhalif-jam-3.jpeg"},
+  {artist:"Juicy Luicy", title:'"Gurun Hujan"', meta:"Single terbaru, e-music", duration:"04:02", img:"https://e-motion.co.id/wp-content/uploads/2026/05/JLBANNER.jpg"},
+  {artist:"Gery Gany", title:"#TimurPride", meta:"Live session, e-live", duration:"05:11", img:"https://e-motion.co.id/wp-content/uploads/2026/05/TPBANNER.jpg"},
+  {artist:"Maisha", title:"Live at E-Motion", meta:"Sesi eksklusif, e-hear", duration:"03:47", img:"https://e-motion.co.id/wp-content/uploads/2024/03/Maisha-Banner-website-E-mo.jpg"}
+];
+
+const newsItems = [
+  {tag:"e-music", date:"12 Jun 2026", title:"Adrian Khalif Resmi Rilis Music Video 2001x Bersama Aqeela Calista dan Fattah Syach", img:tracks[0].img},
+  {tag:"e-music", date:"20 Mei 2026", title:"Juicy Luicy Tuangkan Rasa Rindu dan Tanda Tanya Lewat Single Gurun Hujan", img:tracks[1].img},
+  {tag:"e-live", date:"20 Mei 2026", title:"Gery Gany Rayakan Semangat Musik Indonesia Timur Lewat Live Session TimurPride", img:tracks[2].img}
+];
+
+let current=0, playing=false, autoTimer=null, progressTimer=null, progress=6;
+
+const heroBg=document.getElementById('heroBg');
+const artistName=document.getElementById('artistName');
+const trackTitle=document.getElementById('trackTitle');
+const trackMeta=document.getElementById('trackMeta');
+const barFill=document.getElementById('barFill');
+const timeArtist=document.getElementById('timeArtist');
+const timeTotal=document.getElementById('timeTotal');
+const timeNow=document.getElementById('timeNow');
+const wave=document.getElementById('wave');
+const recDot=document.getElementById('recDot');
+const playIcon=document.getElementById('playIcon');
+const roster=document.getElementById('roster');
+const heroInner=document.querySelector('.hero__inner');
+
+tracks.forEach((t,i)=>{
+  const img=document.createElement('img');
+  img.src=t.img; img.alt=t.artist;
+  if(i===0) img.classList.add('active');
+  heroBg.appendChild(img);
+});
+
+tracks.forEach((t,i)=>{
+  const item=document.createElement('div');
+  item.className='roster__item'+(i===0?' active':'');
+  item.tabIndex=0;
+  item.innerHTML=`<div class="roster__thumb"><img src="${t.img}" alt="${t.artist}"></div><span class="roster__name">${t.artist}</span>`;
+  item.addEventListener('click',()=>goTo(i));
+  item.addEventListener('keydown',e=>{if(e.key==='Enter')goTo(i);});
+  roster.appendChild(item);
+});
+
+function fmt(sec){const m=Math.floor(sec/60),s=Math.floor(sec%60);return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;}
+
+function render(){
+  const t=tracks[current];
+  document.querySelectorAll('.hero__bg img').forEach((img,i)=>img.classList.toggle('active',i===current));
+  heroInner.classList.add('fade-swap');
+  setTimeout(()=>{
+    artistName.textContent=t.artist;
+    trackTitle.textContent=t.title;
+    trackMeta.textContent=t.meta;
+    timeArtist.textContent=`${t.artist}, ${t.title.replace(/"/g,'')}`;
+    timeTotal.textContent=t.duration;
+    heroInner.classList.remove('fade-swap');
+  },160);
+  document.querySelectorAll('.roster__item').forEach((el,i)=>el.classList.toggle('active',i===current));
+  progress=6; barFill.style.width=progress+'%'; timeNow.textContent='00:00';
+}
+
+function goTo(i){current=(i+tracks.length)%tracks.length; render(); if(playing)restartAuto();}
+function restartAuto(){clearInterval(autoTimer); autoTimer=setInterval(()=>goTo(current+1),6500);}
+
+function setPlaying(state){
+  playing=state;
+  recDot.classList.toggle('playing',playing);
+  wave.classList.toggle('playing',playing);
+  playIcon.setAttribute('d', playing ? 'M6 5h4v14H6zm8 0h4v14h-4z' : 'M8 5v14l11-7z');
+  clearInterval(progressTimer); clearInterval(autoTimer);
+  if(playing){
+    progressTimer=setInterval(()=>{
+      progress = progress>=100 ? 0 : progress+0.6;
+      barFill.style.width=progress+'%';
+      const parts=tracks[current].duration.split(':');
+      const totalSec=(+parts[0])*60+(+parts[1]);
+      timeNow.textContent=fmt((progress/100)*totalSec);
+    },120);
+    restartAuto();
+  }
+}
+
+document.getElementById('playBtn').addEventListener('click',()=>setPlaying(!playing));
+document.getElementById('prevBtn').addEventListener('click',()=>goTo(current-1));
+document.getElementById('nextBtn').addEventListener('click',()=>goTo(current+1));
+document.getElementById('scrub').addEventListener('click',(e)=>{
+  const rect=e.currentTarget.getBoundingClientRect();
+  const pct=Math.min(100,Math.max(0,((e.clientX-rect.left)/rect.width)*100));
+  progress=pct; barFill.style.width=pct+'%';
+});
+
+const grid=document.getElementById('highlightGrid');
+newsItems.forEach(n=>{
+  const card=document.createElement('div');
+  card.className='news-card';
+  card.innerHTML=`<div class="news-card__img"><img src="${n.img}" alt=""></div>
+    <div class="news-card__body">
+      <span class="news-card__tag">${n.tag}</span><span class="news-card__date">${n.date}</span>
+      <p class="news-card__title">${n.title}</p>
+    </div>`;
+  grid.appendChild(card);
+});
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>See — E-Motion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="global.css">
+<style>
+  .film-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:20px; max-width:1200px; margin:0 auto; padding:clamp(40px,6vw,64px) clamp(20px,4vw,56px) 100px;}
+  .film-card{background:var(--color-surface); border-radius:var(--radius-cards); box-shadow:var(--shadow-subtle); overflow:hidden; cursor:pointer; transition:transform .2s ease;}
+  .film-card:hover{transform:translateY(-4px);}
+  .film-card__poster{
+    aspect-ratio:2/3; display:flex; align-items:flex-end; padding:20px;
+    background:linear-gradient(160deg, var(--color-navy) 0%, var(--color-navy-800) 55%, var(--color-red) 160%);
+  }
+  .film-card__poster span{color:#fff; font-size:12px; text-transform:uppercase; letter-spacing:.08em; opacity:.7;}
+  .film-card__body{padding:16px 18px 20px;}
+  .film-card__title{font-size:18px; font-weight:500; margin:0 0 6px;}
+  .film-card__cta{font-size:13px; color:var(--color-red); font-weight:500;}
+</style>
+</head>
+<body>
+
+<section class="page-hero">
+  <p class="eyebrow">See</p>
+  <h1 class="display">Our movies for you to watch</h1>
+</section>
+
+<div class="film-grid">
+  <div class="film-card">
+    <div class="film-card__poster"><span>Feature Film</span></div>
+    <div class="film-card__body"><h3 class="film-card__title">Serigala Langit</h3><span class="film-card__cta">Lihat detail</span></div>
+  </div>
+  <div class="film-card">
+    <div class="film-card__poster"><span>Feature Film</span></div>
+    <div class="film-card__body"><h3 class="film-card__title">Sunshine Becomes You</h3><span class="film-card__cta">Lihat detail</span></div>
+  </div>
+  <div class="film-card">
+    <div class="film-card__poster"><span>Feature Film</span></div>
+    <div class="film-card__body"><h3 class="film-card__title">Love And Faith</h3><span class="film-card__cta">Lihat detail</span></div>
+  </div>
+  <div class="film-card">
+    <div class="film-card__poster"><span>Feature Film</span></div>
+    <div class="film-card__body"><h3 class="film-card__title">Midnight</h3><span class="film-card__cta">Lihat detail</span></div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

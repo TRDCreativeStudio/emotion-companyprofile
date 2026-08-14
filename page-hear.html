@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hear — E-Motion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="global.css">
+<style>
+  .artist-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; max-width:1200px; margin:0 auto; padding:clamp(40px,6vw,64px) clamp(20px,4vw,56px) 100px;}
+  .artist-card{background:var(--color-surface); border-radius:var(--radius-cards); box-shadow:var(--shadow-subtle); overflow:hidden; cursor:pointer; position:relative;}
+  .artist-card__photo{aspect-ratio:3/4; overflow:hidden; background:linear-gradient(160deg, var(--color-navy), var(--color-navy-800));}
+  .artist-card__photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .artist-card__photo.placeholder{display:flex; align-items:center; justify-content:center;}
+  .artist-card__photo.placeholder span{font-size:44px; color:rgba(255,255,255,.35); font-weight:700;}
+  .artist-card__play{
+    position:absolute; top:14px; right:14px; width:34px; height:34px; border-radius:50%;
+    background:var(--color-red); display:flex; align-items:center; justify-content:center;
+  }
+  .artist-card__play svg{width:12px; height:12px; fill:#fff;}
+  .artist-card__body{padding:14px 16px 18px;}
+  .artist-card__name{font-size:16px; font-weight:500; margin:0;}
+  .artist-card__role{font-size:12px; color:var(--color-fog); margin-top:4px;}
+</style>
+</head>
+<body>
+
+<section class="page-hero">
+  <p class="eyebrow">Hear</p>
+  <h1 class="display">Our music for you to listen</h1>
+</section>
+
+<div class="artist-grid" id="artistGrid"></div>
+
+<script src="main.js"></script>
+<script>
+const artists = [
+  {name:"Gery Gany", role:"e-live, e-hear", img:"https://e-motion.co.id/wp-content/uploads/2026/05/TPBANNER.jpg"},
+  {name:"Maisha Kanna", role:"e-hear", img:"https://e-motion.co.id/wp-content/uploads/2024/03/Maisha-Banner-website-E-mo.jpg"},
+  {name:"Adrian Khalif", role:"e-hear", img:"https://e-motion.co.id/wp-content/uploads/2026/06/adriankhalif-jam-3.jpeg"},
+  {name:"Agatha Suci", role:"e-hear", img:null},
+  {name:"Ben Sihombing", role:"e-hear", img:null},
+  {name:"Juicy Luicy", role:"e-hear", img:"https://e-motion.co.id/wp-content/uploads/2026/05/JLBANNER.jpg"}
+];
+
+const grid = document.getElementById('artistGrid');
+const playIcon = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+
+artists.forEach(a=>{
+  const card = document.createElement('div');
+  card.className = 'artist-card';
+  const photo = a.img
+    ? `<div class="artist-card__photo"><img src="${a.img}" alt="${a.name}"></div>`
+    : `<div class="artist-card__photo placeholder"><span>${a.name.charAt(0)}</span></div>`;
+  card.innerHTML = `${photo}<div class="artist-card__play">${playIcon}</div>
+    <div class="artist-card__body"><h3 class="artist-card__name">${a.name}</h3><div class="artist-card__role">${a.role}</div></div>`;
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>

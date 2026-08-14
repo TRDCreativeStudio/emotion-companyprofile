@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Journey — E-Motion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="global.css">
+<style>
+  .company{max-width:760px; margin:0 auto; padding:clamp(56px,8vw,90px) 24px;}
+  .company h2{font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--color-red); font-weight:600; margin:0 0 16px;}
+  .company p{font-size:clamp(17px,2vw,20px); line-height:1.65; color:var(--color-ink); margin:0;}
+
+  .milestone-head{padding:0 clamp(20px,4vw,56px); max-width:1100px; margin:0 auto;}
+  .milestone-head h2{font-size:clamp(28px,4vw,36px); font-weight:400; margin:0 0 40px;}
+
+  .timeline{max-width:1100px; margin:0 auto; padding:0 clamp(20px,4vw,56px) 100px;}
+  .t-item{display:grid; grid-template-columns:120px 1fr; gap:24px; padding:28px 0; border-top:1px solid var(--color-ash);}
+  .t-item:last-child{border-bottom:1px solid var(--color-ash);}
+  .t-year{font-size:clamp(28px,4vw,40px); font-weight:400; color:var(--color-red);}
+  .t-text{font-size:15px; line-height:1.65; color:var(--color-fog); padding-top:6px;}
+  .t-text strong{color:var(--color-ink); font-weight:600;}
+
+  @media (max-width:640px){
+    .t-item{grid-template-columns:1fr; gap:6px;}
+  }
+</style>
+</head>
+<body>
+
+<section class="page-hero">
+  <p class="eyebrow">Journey</p>
+  <h1 class="display">We make remarkable experience through the years</h1>
+</section>
+
+<section class="company">
+  <h2>Company</h2>
+  <p>E-Motion adalah perusahaan hiburan dan media terintegrasi dengan lini usaha di bidang musik, film, televisi, dan teknologi digital. Berbasis di Jakarta dan Bali, E-Motion memadukan kreativitas, kemampuan menjangkau audiens nasional, dan pandangan jauh ke depan untuk menghadirkan gagasan inovatif sebagai salah satu sumber konten budaya populer terdepan di Indonesia.</p>
+</section>
+
+<div class="milestone-head"><h2 class="display">Milestone</h2></div>
+
+<div class="timeline">
+  <div class="t-item"><div class="t-year">2004</div><div class="t-text">E-Motion Entertainment didirikan sebagai <strong>label musik dan penyedia konten terintegrasi.</strong></div></div>
+  <div class="t-item"><div class="t-year">2006</div><div class="t-text">Meluncurkan <strong>layanan solusi mobile digital</strong> yang terhubung ke seluruh operator seluler utama di Indonesia, lewat kode SMS singkat '9965' untuk RBT (ring back tone).</div></div>
+  <div class="t-item"><div class="t-year">2007</div><div class="t-text">Ditunjuk sebagai <strong>distributor resmi BlackBerry,</strong> memperkenalkan produk tersebut sebagai gaya hidup ke pasar Indonesia.</div></div>
+  <div class="t-item"><div class="t-year">2009</div><div class="t-text">Menyelenggarakan <strong>peluncuran Live TV pertama BlackBerry di dunia.</strong> Sejak itu Indonesia tetap jadi pasar terpenting bagi BlackBerry hingga kini.</div></div>
+  <div class="t-item"><div class="t-year">2010</div><div class="t-text">Divisi <strong>Film dan TV</strong> diluncurkan, memproduksi dan menayangkan lebih dari 2000 jam program di televisi nasional.</div></div>
+  <div class="t-item"><div class="t-year">2012</div><div class="t-text">E-Motion memperluas jejak lewat keterlibatan di berbagai <strong>produksi film dan nominasi penghargaan.</strong></div></div>
+  <div class="t-item"><div class="t-year">2014</div><div class="t-text"><strong>Studio E</strong> didirikan, konsultan brand terintegrasi pertama untuk industri hiburan di Indonesia.</div></div>
+  <div class="t-item"><div class="t-year">2016</div><div class="t-text">Akuisisi strategis <strong>PT. Vision Interprima Pictures</strong> untuk memperkuat divisi Film dan TV, sekaligus membuka akses ke jaringan studio besar Hollywood.</div></div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collaborate — E-Motion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="global.css">
+<style>
+  .collab-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:1200px; margin:0 auto; padding:clamp(40px,6vw,64px) clamp(20px,4vw,56px) 20px;}
+  .collab-card{background:var(--color-surface); border-radius:var(--radius-cards); box-shadow:var(--shadow-subtle); padding:clamp(28px,4vw,40px);}
+  .collab-card .tag{font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--color-red); font-weight:600;}
+  .collab-card h2{font-size:28px; font-weight:400; margin:12px 0 14px;}
+  .collab-card p{font-size:15px; line-height:1.65; color:var(--color-fog); margin:0 0 20px;}
+  .collab-card .contact{border-top:1px solid var(--color-ash); padding-top:18px; font-size:14px; line-height:1.7;}
+  .collab-card .contact strong{display:block; color:var(--color-ink); font-weight:600;}
+  .collab-card .contact a{color:var(--color-red);}
+  .collab-card .contact a:hover{text-decoration:underline;}
+
+  .cc-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:1200px; margin:0 auto; padding:20px clamp(20px,4vw,56px) 100px;}
+  .cc-card{background:var(--color-navy); color:#fff; border-radius:var(--radius-cards); padding:clamp(28px,4vw,40px);}
+  .cc-card h2{font-size:24px; font-weight:400; margin:0 0 14px;}
+  .cc-card p{font-size:14px; line-height:1.65; color:var(--color-fog-dark); margin:0 0 20px;}
+  .cc-card .contact{border-top:1px solid var(--color-iron); padding-top:18px; font-size:14px; line-height:1.7; color:var(--color-fog-dark);}
+  .cc-card .contact strong{display:block; color:#fff; font-weight:600;}
+  .cc-card .contact a{color:#fff; text-decoration:underline; text-underline-offset:2px;}
+  .cc-card .btn-red{
+    display:inline-block; margin-top:16px; background:var(--color-red); color:#fff;
+    border-radius:var(--radius-buttons); padding:12px 20px; font-size:14px; font-weight:600;
+  }
+
+  @media (max-width:700px){ .collab-grid, .cc-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<section class="page-hero">
+  <p class="eyebrow">Collaborate</p>
+  <h1 class="display">Be part of our journey</h1>
+</section>
+
+<div class="collab-grid">
+  <div class="collab-card">
+    <span class="tag">Partnership</span>
+    <h2 class="display">Partnership</h2>
+    <p>Kami percaya sinergi yang kuat dan kemitraan yang solid bisa membawa keajaiban di setiap proyek. Konsep kemitraan kami membuka jalan buat kamu ikut ambil bagian dalam konten hiburan E-Motion yang penuh emosi dan keterlibatan.</p>
+    <div class="contact">
+      <strong>Tertarik berkolaborasi dalam sebuah proyek?</strong>
+      PT. E-Motion Entertainment<br>
+      Jl. Blora No.5, Jakarta 10310, Indonesia<br>
+      Tel: +62 21 310 2888 / 310 3888<br>
+      Email: <a href="mailto:recruitment@e-motion.co.id">recruitment@e-motion.co.id</a>
+    </div>
+  </div>
+
+  <div class="collab-card">
+    <span class="tag">Business Development</span>
+    <h2 class="display">Business Development</h2>
+    <p>Bersama kami, brand kamu bisa hadir lewat berbagai cara dan platform: penempatan produk, sponsorship acara khusus, hingga endorsement selebriti. Strategi sponsorship kami dirancang buat naikkan brand awareness dan penjualan, melampaui iklan konvensional.</p>
+    <div class="contact">
+      <strong>Diskusikan detailnya bersama kami:</strong>
+      PT. E-Motion Entertainment<br>
+      Jl. Blora No.5, Jakarta 10310, Indonesia<br>
+      Tel: +62 21 310 2888 / 310 3888<br>
+      Email: <a href="mailto:recruitment@e-motion.co.id">recruitment@e-motion.co.id</a>
+    </div>
+  </div>
+</div>
+
+<div class="cc-grid">
+  <div class="cc-card">
+    <h2>Career</h2>
+    <p>E-Motion selalu mencari pemikir orisinal dan orang-orang dinamis untuk proyek hiburan kami yang beragam.</p>
+    <div class="contact">
+      <strong>Kirim lamaranmu ke:</strong>
+      HRD Division, E-Motion Entertainment<br>
+      Jl. Blora No.5, Jakarta Pusat 10310<br>
+      Email: <a href="mailto:recruitment@e-motion.co.id">recruitment@e-motion.co.id</a>
+    </div>
+    <a href="#" class="btn-red">Lihat lowongan</a>
+  </div>
+
+  <div class="cc-card">
+    <h2>Contact</h2>
+    <p>Kami senang mendengar dari kamu. Hubungi kami untuk kemitraan bisnis atau pertanyaan lainnya.</p>
+    <div class="contact">
+      <strong>HRD Division, E-Motion Entertainment</strong>
+      Jl. Blora No.5, Jakarta Pusat 10310<br>
+      Email: <a href="mailto:recruitment@e-motion.co.id">recruitment@e-motion.co.id</a>
+    </div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
