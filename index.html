@@ -301,7 +301,16 @@ function setPlaying(state){
       audio.src = tracks[current].src;
       audio.load();
     }
-    audio.play().catch(err => console.log("Audio play error:", err));
+    audio.play().catch(err => {
+      console.log("Autoplay blocked, waiting for click:", err);
+      setPlaying(false);
+      
+      const playOnUserClick = () => {
+        setPlaying(true);
+        window.removeEventListener('click', playOnUserClick);
+      };
+      window.addEventListener('click', playOnUserClick);
+    });
     progressTimer=setInterval(()=>{
       if (audio.duration) {
         const pct = (audio.currentTime / audio.duration) * 100;
